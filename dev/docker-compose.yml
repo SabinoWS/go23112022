@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  go-dev:
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    volumes:
+      - type: bind
+        source: ..
+        target: /app
+        bind:
+          propagation: rprivate
+    network_mode: host
+    tty: true
